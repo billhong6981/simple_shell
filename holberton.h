@@ -10,6 +10,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <stddef.h>
+#include <assert.h>
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)

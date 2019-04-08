@@ -8,10 +8,13 @@ void free_av(char **av)
 {
 	int i = 0;
 
-	while (av[i] != NULL)
+	while (av != NULL && av[i] != NULL)
 	{
+		assert(av[i] != NULL);
 		free(av[i]);
 		++i;
 	}
-/*	free(av);*/
+	assert(av != NULL);
+	if (av != NULL)
+		free(av);
 }

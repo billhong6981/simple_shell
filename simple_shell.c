@@ -20,7 +20,11 @@ int main(void)
 			break;
 		ext = _strcmp(line, "exit\n");
 		if (ext == 0)
+		{
+			free_list(head);
+			free(line);
 			exit(0);
+		}
 		printf("%s", line);
 		new_line = trun_space(line);
 		printf("newline:%s\n", new_line);
@@ -34,7 +38,7 @@ int main(void)
 			exec_cmd(cmd, new_line);
 		}
 	}
-	free(line);
 	free_list(head);
+	free(line);
 	return (0);
 }

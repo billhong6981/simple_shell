@@ -20,7 +20,7 @@ char *search_file(list_t *head, char *str)
 	len = _strlen(token1);
 	while (len)
 		*(--s) = token1[--len];
-	if (( *s == '.' && *(s + 1) == '/') || (*s == '/'))
+	if ((*s == '.' && *(s + 1) == '/') || (*s == '/'))
 	{
 		if (stat(s, &st) == 0)
 		{

@@ -1,5 +1,10 @@
 #include "holberton.h"
-
+/**
+ * path_list - creates a linked list of the path
+ * @head: linked list head
+ *
+ * Return: returns the linked list head.
+ */
 list_t *path_list(list_t **head)
 {
 	char *name = "PATH";

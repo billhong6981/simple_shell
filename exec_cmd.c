@@ -24,7 +24,7 @@ int exec_cmd(char *cmd, char *line)
 		if (ret == -1)
 		{
 			perror("ERROR");
-/*			free_av(argv);*/
+/*			free_av(argv); */
 			return (1);
 		}
 	}
@@ -32,6 +32,6 @@ int exec_cmd(char *cmd, char *line)
 	{
 		wait(&status);
 	}
-/*	free_av(argv);*/
+/*	free_av(argv); */
 	return (0);
 }

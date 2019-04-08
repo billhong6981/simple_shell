@@ -1,6 +1,10 @@
 #include "holberton.h"
 /**
+ * conv_line - converts a line to a command able to be run through execve
+ * @cmd: command entered
+ * @line: argument entered for cmd
  *
+ * Return: a array of strings to be passed to execve
  */
 char **conv_line(char *cmd, char *line)
 {
@@ -21,15 +25,8 @@ char **conv_line(char *cmd, char *line)
 	{
 		token = strtok(NULL, " ");
 		av[i] = _strdup(token);
-
-		printf("av[%d]:%s\n", i, av[i]);
-
 	}
 	av[i] = NULL;
-	printf("av[0]:%s\n", av[0]);
-	printf("av[%d]:%s\n", i, av[i]);
-
 	free(str_dup);
-
 	return (av);
 }

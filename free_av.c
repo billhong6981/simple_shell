@@ -13,5 +13,5 @@ void free_av(char **av)
 		free(av[i]);
 		++i;
 	}
-	free(av);
+/*	free(av);*/
 }

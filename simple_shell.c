@@ -12,7 +12,7 @@ int main(void)
 	char *cmd, *new_line, *line = NULL;
 
 	path_list(&head);
-	while (1)
+	while (head != NULL)
 	{
 		printf("$ ");
 		nread = getline(&line, &len, stdin);
@@ -38,7 +38,10 @@ int main(void)
 			exec_cmd(cmd, new_line);
 		}
 	}
+	if (head != NULL)
+	{
 	free_list(head);
 	free(line);
+	}
 	return (0);
 }

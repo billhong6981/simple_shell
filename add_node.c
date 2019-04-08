@@ -23,6 +23,7 @@ list_t *add_node(list_t **head, char *str)
 		return (NULL);
 	}
 	newnode->str = s;
+	free(s);
 	newnode->next = (*head);
 	(*head) = newnode;
 	return ((*head));

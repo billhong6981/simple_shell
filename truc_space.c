@@ -1,18 +1,39 @@
 #include "holberton.h"
 /**
  * trun_space - a function that deletes the leading space(se)
- * @line: a string
+ * @str: a string
  * Return: return a string
  */
-char *trun_space(char *line)
+char *trun_space(char *str)
 {
-	char *s = NULL;
-	int i = 0;
+	char *str1;
+	static char buffer[1000];
+	int len;
+	int flag = 0;
 
-	while (line[i] == ' ' && line[i + 1] != '\0')
+	str1 = &buffer[999];
+	*str1 = '\0';
+	len = _strlen(str);
+	while (len)
 	{
-		i++;
+		--len;
+		if (str[len] != ' ' && str[len] != '\n' && flag == 0)
+		{
+			*(--str1) = str[len];
+			flag = 1;
+			continue;
+		}
+		if (str[len] == ' ' || str[len] == '\n')
+			continue;
+		if (str[len] != ' ' && str[len + 1] == ' ')
+		{
+			*(--str1) = ' ';
+			*(--str1) = str[len];
+		}
+		else
+		{
+			*(--str1) = str[len];
+		}
 	}
-	s = &line[i];
-	return (s);
+	return ((flag == 0) ? (NULL) : (str1));
 }

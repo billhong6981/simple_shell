@@ -31,6 +31,9 @@ int _strlen(char *s);
 list_t *path_list(list_t **head);
 char *search_file(list_t *head, char *str);
 size_t print_list(list_t *h);
-char *trun_space(char *line);
+char *trun_space(char *str);
+int exec_cmd(char *cmd, char *line);
+void free_av(char **av);
+char **conv_line(char *cmd, char *line);
 
 #endif

@@ -1,0 +1,37 @@
+#include "holberton.h"
+/**
+ * exec_cmd - a function that executes the command it takes from arguments
+ * @cmd: the command or executable file
+ * @line: the argument get from CLI input
+ * Return: return 0 on success, 1 if fail
+ */
+int exec_cmd(char *cmd, char *line)
+{
+	int ret, status;
+	char **argv;
+	pid_t child_pid;
+
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("ERROR");
+		return (1);
+	}
+	if (child_pid == 0)
+	{
+		argv = conv_line(cmd, line);
+		ret = execve(cmd, argv, NULL);
+		if (ret == -1)
+		{
+			perror("ERROR");
+/*			free_av(argv);*/
+			return (1);
+		}
+	}
+	else
+	{
+		wait(&status);
+	}
+/*	free_av(argv);*/
+	return (0);
+}

@@ -35,5 +35,6 @@ char *trun_space(char *str);
 int exec_cmd(char *cmd, char *line);
 void free_av(char **av);
 char **conv_line(char *cmd, char *line);
+int _strcmp(char *s1, char *s2);
 
 #endif

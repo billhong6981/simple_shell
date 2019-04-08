@@ -8,7 +8,7 @@ int main(void)
 {
 	list_t *head = NULL;
 	ssize_t nread;
-	size_t len = 0;
+	size_t len = 0, ext = 1;
 	char *cmd, *new_line, *line = NULL;
 
 	path_list(&head);
@@ -18,6 +18,9 @@ int main(void)
 		nread = getline(&line, &len, stdin);
 		if (nread == -1)
 			break;
+		ext = _strcmp(line, "exit\n");
+		if (ext == 0)
+			exit(0);
 		printf("%s", line);
 		new_line = trun_space(line);
 		printf("newline:%s\n", new_line);

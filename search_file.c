@@ -10,12 +10,12 @@ char *search_file(list_t *head, char *str)
 	list_t *h = head;
 	int len = 0;
 	char *s, *s1, *line1, *token1;
-	static char array[200];
+	static char array[100];
 	struct stat st;
 
 	line1 = _strdup(str);
 	token1 = strtok(line1, " ");
-	s = &array[199];
+	s = &array[99];
 	*s = '\0';
 	len = _strlen(token1);
 	while (len)

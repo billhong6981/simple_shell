@@ -15,8 +15,8 @@ int main(void)
 	while (1)
 	{
 		dir = _getcwd();
-		printf("%s$ ", dir);
-		free(dir);
+		write(1, dir, _strlen(dir));
+		write(1, "$ ", 2);
 		nread = getline(&line, &len, stdin);
 		if (nread == -1)
 			break;
@@ -34,12 +34,14 @@ int main(void)
 			continue;
 		cmd = search_file(head, new_line);
 		if (cmd == NULL)
-			printf("NOT FOUND FILE\n");
-		else
 		{
-			exec_cmd(cmd, new_line);
+			write(1, new_line, _strlen(new_line));
+			write(1, ": command not found\n", 20);
 		}
+		else
+			exec_cmd(cmd, new_line);
 	}
+	free(dir);
 	free_list(head);
 	free(line);
 	return (0);

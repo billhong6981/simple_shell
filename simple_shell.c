@@ -27,9 +27,7 @@ int main(void)
 			free(line);
 			exit(0);
 		}
-		printf("%s", line);
 		new_line = trun_space(line);
-		printf("newline:%s\n", new_line);
 		if (new_line == NULL)
 			continue;
 		cmd = search_file(head, new_line);

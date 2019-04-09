@@ -9,12 +9,14 @@ int main(void)
 	list_t *head = NULL;
 	ssize_t nread;
 	size_t len = 0, ext = 1;
-	char *cmd, *new_line, *line = NULL;
+	char *cmd, *dir = NULL, *new_line, *line = NULL;
 
 	path_list(&head);
 	while (1)
 	{
-		printf("$ ");
+		dir = _getcwd();
+		printf("%s$ ", dir);
+		free(dir);
 		nread = getline(&line, &len, stdin);
 		if (nread == -1)
 			break;

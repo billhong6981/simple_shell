@@ -1,6 +1,8 @@
 #include "holberton.h"
 /**
+ * _getcwd - get current working directory
  *
+ * Return: the current working directory in string form
  */
 char *_getcwd(void)
 {
@@ -9,7 +11,7 @@ char *_getcwd(void)
 
 	if (dir == NULL)
 	{
-		return(NULL);
+		return (NULL);
 	}
 	getcwd(dir, dirsize);
 	return (dir);

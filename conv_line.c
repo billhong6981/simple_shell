@@ -17,9 +17,11 @@ char **conv_line(char *cmd, char *line)
 			spac_num++;
 	}
 	av = malloc((spac_num + 2) * sizeof(void *));
-/*	str_dup = _strdup(line);
-	token = strtok(str_dup, " ");
-	av[0] = _strdup(cmd);*/
+/*
+ *	str_dup = _strdup(line);
+ *	token = strtok(str_dup, " ");
+ *	av[0] = _strdup(cmd);
+*/
 	strtok(line, " ");
 	av[0] = cmd;
 	for (i = 1; i <= spac_num; i++)

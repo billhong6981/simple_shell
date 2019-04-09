@@ -16,6 +16,7 @@ int main(void)
 	{
 		dir = _getcwd();
 		write(1, dir, _strlen(dir));
+		free(dir);
 		write(1, "$ ", 2);
 		nread = getline(&line, &len, stdin);
 		if (nread == -1)
@@ -39,7 +40,6 @@ int main(void)
 		else
 			exec_cmd(cmd, new_line);
 	}
-	free(dir);
 	free_list(head);
 	free(line);
 	return (0);

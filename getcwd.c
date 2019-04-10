@@ -1,0 +1,16 @@
+#include "holberton.h"
+/**
+ *
+ */
+char *_getcwd(void)
+{
+	char *dir = malloc(4096); /*max path size*/
+	size_t dirsize = 4096;
+
+	if (dir == NULL)
+	{
+		return(NULL);
+	}
+	getcwd(dir, dirsize);
+	return (dir);
+}

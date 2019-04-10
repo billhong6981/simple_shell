@@ -38,5 +38,8 @@ void free_av(char **av);
 char **conv_line(char *cmd, char *line);
 int _strcmp(char *s1, char *s2);
 size_t get_current_dir(char **dir, char *str);
+char *_getcwd(void);
+ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif

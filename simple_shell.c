@@ -15,8 +15,7 @@ int main(void)
 	while (1)
 	{
 		printf("$ ");
-		nread = getline(&line, &len, stdin);
-		if (nread == -1)
+		if ((nread = getline(&line, &len, stdin)) == -1)
 			break;
 		ext = _strcmp(line, "exit\n");
 		if (ext == 0)
@@ -26,17 +25,12 @@ int main(void)
 			exit(0);
 		}
 		printf("%s", line);
-		new_line = trun_space(line);
-		printf("newline:%s\n", new_line);
-		if (new_line == NULL)
+		if ((new_line = trun_space(line)) == NULL)
 			continue;
-		cmd = search_file(head, new_line);
-		if (cmd == NULL)
-			printf("NOT FOUND FILE\n");
+		if ((cmd = search_file(head, new_line)) == NULL)
+			printf("%s:NO such file or directory\n", cmd);
 		else
-		{
 			exec_cmd(cmd, new_line);
-		}
 	}
 	free_list(head);
 	free(line);

@@ -10,7 +10,8 @@ int exec_cmd(char *cmd, char *line)
 	int ret, status;
 	char **argv;
 	pid_t child_pid;
-	char *const env[] = {"HOME=/usr/home", "PATH=/bin:/sbin", NULL};
+/*	char *const env[] = {"HOME=/usr/home", "PATH=/bin:/sbin", NULL};*/
+	extern char **environ;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -23,7 +24,7 @@ int exec_cmd(char *cmd, char *line)
 		argv = conv_line(cmd, line);
 		if (argv == NULL)
 			return (1);
-		ret = execve(cmd, argv, env);
+		ret = execve(cmd, argv, environ);
 		if (ret == -1)
 		{
 			perror("ERROR");

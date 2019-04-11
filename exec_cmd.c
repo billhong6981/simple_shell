@@ -12,6 +12,9 @@ int exec_cmd(char *cmd, char *line)
 	pid_t child_pid;
 	extern char **environ;
 
+	argv = conv_line(cmd, line);
+	if (argv == NULL)
+		return (1);
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -20,9 +23,6 @@ int exec_cmd(char *cmd, char *line)
 	}
 	if (child_pid == 0)
 	{
-		argv = conv_line(cmd, line);
-		if (argv == NULL)
-			return (1);
 		ret = execve(cmd, argv, environ);
 		if (ret == -1)
 		{

@@ -24,6 +24,16 @@ typedef struct list_s
 	char *str;
 	struct list_s *next;
 } list_t;
+/**
+ * struct func - a data struct for builtin command and its function pointer
+ * @str: a command string
+ * @fn: a function pointer
+ */
+typedef struct func
+{
+	char *str;
+	char *(*fn)();
+} fn_types;
 /* The following are prototypes */
 list_t *add_node(list_t **head, char *str);
 void free_list(list_t *head);
@@ -41,5 +51,7 @@ size_t get_current_dir(char **dir, char *str);
 char *_getcwd(void);
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *(*get_builtin_fn(char *s, char **d))(char *);
+char *change_dir(char *d);
 
 #endif

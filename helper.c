@@ -18,19 +18,22 @@ char *(*get_builtin_fn(char *s, char **d))(char *)
 	for (i = 0; s[i] != ' ' && s[i] != '\0'; i++)
 		cmd[i] = s[i];
 	cmd[i] = '\0';
-	if (s[i] == '\0')
-		(*d) = NULL;
-	else
+	if (s[i] != '\0')
 	{
 		(*d) = &cmd[++i];
 		for (j = 0; s[i] != ' ' && s[i] != '\0'; i++, j++)
 			(*d)[j] = s[i];
 		(*d)[j] = '\0';
+		(*d) = _strdup((*d));
 	}
 	for (i = 0; builtin_fn[i].str; i++)
 	{
 		if (_strcmp(cmd, builtin_fn[i].str) == 0)
+		{
+			free(cmd);
 			return (builtin_fn[i].fn);
+		}
 	}
+	free(cmd);
 	return (NULL);
 }

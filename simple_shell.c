@@ -29,13 +29,16 @@ int main(void)
 		}
 		if ((new_line = trun_space(line)) == NULL)
 			continue;
-
 		found_builtin = get_builtin_fn(new_line, &av1);
 		if (found_builtin != NULL)
 		{
 			found_builtin(av1);
+			if (av1 != NULL)
+				free(av1);
 			continue;
 		}
+		if (av1 != NULL)
+			free(av1);
 		if ((cmd = search_file(head, new_line)) == NULL)
 		{
 			write(1, new_line, _strlen(new_line));

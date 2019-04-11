@@ -10,7 +10,6 @@ int exec_cmd(char *cmd, char *line)
 	int ret, status;
 	char **argv;
 	pid_t child_pid;
-	extern char **environ;
 
 	argv = conv_line(cmd, line);
 	if (argv == NULL)

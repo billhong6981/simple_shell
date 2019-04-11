@@ -1,7 +1,10 @@
 #include "holberton.h"
-
 /**
- *
+ * _get_line - gets a line form stdin
+ * @lineptr: a pointer to the line
+ * @n: the length of the string
+ * @stream: the file that is being read from
+ * Return: *n -1 if lineptr is NULL, or n = i
  */
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 {
@@ -18,7 +21,7 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 			break;
 		(*lineptr)[i++] = c;
 	}
-	if (i >= maxchar -2)
+	if (i >= maxchar - 2)
 	{
 		maxchar += maxchar;
 		(*lineptr) = _realloc((*lineptr), i, maxchar);

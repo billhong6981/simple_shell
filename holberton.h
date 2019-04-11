@@ -11,6 +11,8 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <assert.h>
+/* The following are global vars */
+extern char **environ;
 /**
  * struct list_s - singly linked list
  * @str: string - (malloc'ed string)
@@ -53,5 +55,6 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *(*get_builtin_fn(char *s, char **d))(char *);
 char *change_dir(char *d);
+char *_getenv(char *env);
 
 #endif

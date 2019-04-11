@@ -2,6 +2,7 @@
 /**
  * get_builtin_fn - a function help to found builtin function
  * @s: a input command string
+ * @d: command arguments
  * Return: return a function pointer if found, otherwise NULL
  */
 char *(*get_builtin_fn(char *s, char **d))(char *)

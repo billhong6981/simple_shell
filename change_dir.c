@@ -1,6 +1,8 @@
 #include "holberton.h"
 /**
- *
+ * change_dir - changes the current working dir
+ * @d: arguments to pass to cd
+ * Return: returns the path to the desired dir, or d the supplied string
  */
 char *change_dir(char *d)
 {
@@ -10,7 +12,7 @@ char *change_dir(char *d)
 	old_dir = _getcwd();
 	if (d == NULL || _strcmp(d, "~") == 0 || _strcmp(d, "$HOME") == 0)
 	{
-		value = getenv("HOME");
+		value = _getenv("HOME");
 		ret = chdir(value);
 		if (ret == 0)
 		{
@@ -22,15 +24,15 @@ char *change_dir(char *d)
 	}
 	if (_strcmp(d, "-") == 0)
 	{
-		value = getenv("OLDPWD");
+		value = _getenv("OLDPWD");
 		ret = chdir(value);
 		if (ret == 0)
-                {
-                        setenv("OLDPWD", old_dir, 1);
-                        setenv("PWD", value, 1);
-                }
+		{
+			setenv("OLDPWD", old_dir, 1);
+			setenv("PWD", value, 1);
+		}
 		free(old_dir);
-                return (value);
+		return (value);
 	}
 	ret = chdir(d);
 	if (ret == 0)

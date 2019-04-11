@@ -1,8 +1,4 @@
 #include "holberton.h"
-<<<<<<< HEAD
-#include <string.h>
-=======
->>>>>>> Developer
 /**
  *
  */

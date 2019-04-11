@@ -3,7 +3,7 @@
 /**
  *
  */
-char *_getenv(void)
+char *_getenv(char *env)
 {
 	extern char **environ;
 	int i = 0;
@@ -11,7 +11,7 @@ char *_getenv(void)
 	while (environ[i])
 	{
 		pathcheck = strtok(environ[i], "=");
-		if (!_strcmp(pathcheck, "PATH"))
+		if (!_strcmp(pathcheck, env))
 		{
 			printf("\n%s\n", pathcheck);
 			path = strtok(NULL, "=");

@@ -9,7 +9,7 @@ list_t *path_list(list_t **head)
 {
 	char *value, *token;
 
-	value = _getenv();
+	value = _getenv("PATH");
 	if (value == NULL)
 		return (NULL);
 	token = strtok(value, ":");

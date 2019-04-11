@@ -39,5 +39,5 @@ char **conv_line(char *cmd, char *line);
 int _strcmp(char *s1, char *s2);
 char *_getcwd(void);
 char *_getenv(void);
-
+size_t print_list(list_t *h);
 #endif

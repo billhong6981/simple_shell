@@ -15,8 +15,10 @@ list_t *path_list(list_t **head)
 	token = strtok(value, ":");
 	while (token != NULL)
 	{
+		printf("%s\n", token);
 		add_node(head, token);
 		token = strtok(NULL, ":");
 	}
+	print_list(*head);
 	return ((*head));
 }

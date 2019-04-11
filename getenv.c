@@ -14,7 +14,7 @@ char *_getenv(void)
 		if (!_strcmp(pathcheck, "PATH"))
 		{
 			printf("\n%s\n", pathcheck);
-			path = strtok(NULL, environ[i]);
+			path = strtok(NULL, "=");
 			printf("path = %s\n", path);
 			return (path);
 		}

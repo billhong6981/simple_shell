@@ -15,13 +15,18 @@ char *(*get_builtin_fn(char *s, char **d))(char *)
 	cmd = malloc((_strlen(s) + 2));
 	if (cmd == NULL)
 		return (NULL);
-	for (i = 0; s[i] != ' '; i++)
+	for (i = 0; s[i] != ' ' && s[i] != '\0'; i++)
 		cmd[i] = s[i];
 	cmd[i] = '\0';
-	(*d) = &cmd[++i];
-	for (j = 0; s[i] != ' ' && s[i] != '\0'; i++, j++)
-		(*d)[j] = s[i];
-	(*d)[j] = '\0';
+	if (s[i] == '\0')
+		(*d) = NULL;
+	else
+	{
+		(*d) = &cmd[++i];
+		for (j = 0; s[i] != ' ' && s[i] != '\0'; i++, j++)
+			(*d)[j] = s[i];
+		(*d)[j] = '\0';
+	}
 	for (i = 0; builtin_fn[i].str; i++)
 	{
 		if (_strcmp(cmd, builtin_fn[i].str) == 0)

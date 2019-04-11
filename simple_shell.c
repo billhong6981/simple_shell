@@ -7,8 +7,7 @@
 int main(void)
 {
 	list_t *head = NULL;
-	ssize_t nread;
-	size_t len = 0, ext = 1;
+	size_t len = 0;
 	char *cmd, *av1 = NULL, *dir = NULL, *new_line, *line = NULL;
 	char *(*found_builtin)(char *);
 

@@ -1,5 +1,8 @@
 #include "holberton.h"
+<<<<<<< HEAD
 #include <string.h>
+=======
+>>>>>>> Developer
 /**
  *
  */
@@ -13,9 +16,7 @@ char *_getenv(char *env)
 		pathcheck = strtok(environ[i], "=");
 		if (!_strcmp(pathcheck, env))
 		{
-			printf("\n%s\n", pathcheck);
 			path = strtok(NULL, "=");
-			printf("path = %s\n", path);
 			return (path);
 		}
 		i++;

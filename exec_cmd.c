@@ -10,8 +10,11 @@ int exec_cmd(char *cmd, char *line)
 	int ret, status;
 	char **argv;
 	pid_t child_pid;
-	char *const env[] = {"HOME=/usr/home", "PATH=/bin:/sbin", NULL};
+	extern char **environ;
 
+	argv = conv_line(cmd, line);
+	if (argv == NULL)
+		return (1);
 	child_pid = fork();
 	if (child_pid == -1)
 	{
@@ -20,15 +23,11 @@ int exec_cmd(char *cmd, char *line)
 	}
 	if (child_pid == 0)
 	{
-		argv = conv_line(cmd, line);
-		if (argv == NULL)
-			return (1);
-		ret = execve(cmd, argv, env);
+		ret = execve(cmd, argv, environ);
 		if (ret == -1)
 		{
 			perror("ERROR");
 			free(argv);
-/*			free_av(argv); */
 			return (1);
 		}
 	}
@@ -36,7 +35,5 @@ int exec_cmd(char *cmd, char *line)
 	{
 		wait(&status);
 	}
-/*	free_av(argv);*/
-/*	free(argv);*/
 	return (0);
 }

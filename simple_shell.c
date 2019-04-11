@@ -9,7 +9,8 @@ int main(void)
 	list_t *head = NULL;
 	ssize_t nread;
 	size_t len = 0, ext = 1;
-	char *cmd, *dir = NULL, *new_line, *line = NULL;
+	char *cmd, *av1 = NULL, *dir = NULL, *new_line, *line = NULL;
+	char *(*found_builtin)(char *);
 
 	path_list(&head);
 	while (1)
@@ -18,21 +19,24 @@ int main(void)
 		write(1, dir, _strlen(dir));
 		free(dir);
 		write(1, "$ ", 2);
-		nread = getline(&line, &len, stdin);
-		if (nread == -1)
+		if ((_get_line(&line, &len, stdin)) == -1)
 			break;
-		ext = _strcmp(line, "exit\n");
-		if (ext == 0)
+		if ((_strcmp(line, "exit\n")) == 0)
 		{
 			free_list(head);
 			free(line);
 			exit(0);
 		}
-		new_line = trun_space(line);
-		if (new_line == NULL)
+		if ((new_line = trun_space(line)) == NULL)
 			continue;
-		cmd = search_file(head, new_line);
-		if (cmd == NULL)
+
+		found_builtin = get_builtin_fn(new_line, &av1);
+		if (found_builtin != NULL)
+		{
+			found_builtin(av1);
+			continue;
+		}
+		if ((cmd = search_file(head, new_line)) == NULL)
 		{
 			write(1, new_line, _strlen(new_line));
 			write(1, ": command not found\n", 20);

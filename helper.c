@@ -31,7 +31,11 @@ char *(*get_builtin_fn(char *s, char **d))(char *)
 	for (i = 0; builtin_fn[i].str; i++)
 	{
 		if (_strcmp(cmd, builtin_fn[i].str) == 0)
+		{
+			free(cmd);
 			return (builtin_fn[i].fn);
+		}
 	}
+	free (cmd);
 	return (NULL);
 }

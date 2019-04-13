@@ -18,6 +18,7 @@ int exec_cmd(char *cmd, char *line)
 	if (child_pid == -1)
 	{
 		perror("ERROR");
+		free(argv);
 		return (1);
 	}
 	if (child_pid == 0)
@@ -34,5 +35,6 @@ int exec_cmd(char *cmd, char *line)
 	{
 		wait(&status);
 	}
+	free(argv);
 	return (0);
 }

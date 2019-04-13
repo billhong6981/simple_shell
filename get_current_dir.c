@@ -1,8 +1,9 @@
 #include "holberton.h"
-/*
- * get_current_dir - a function gets current working directory
- * @input:void
- * Return: current working directory string pointer
+/**
+ * get_current_dir - checks if the dir has a :/
+ * @dir: dir to check
+ * @str: string to check
+ * Return: 0 if success, 1 if fail
  */
 size_t get_current_dir(char **dir, char *str)
 {
@@ -13,9 +14,11 @@ size_t get_current_dir(char **dir, char *str)
 	{
 		if (str[i] == ':' && str[i + 1] == '/')
 		{
-			if ((buf = malloc(500)) == NULL)
+			buf = malloc(500);
+			if (buf == NULL)
 				return (1);
-			if ((*dir = getcwd(buf, size)) == NULL)
+			*dir = getcwd(buf, size);
+			if (*dir == NULL)
 				return (1);
 			return (0);
 		}

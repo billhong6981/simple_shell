@@ -2,61 +2,60 @@
 /**
  * change_dir - a function changes the working directory
  * @d: a directory name desired to change
- * Return: return the name of current working directory
+ * Return: returns the path to the desired dir, or d the supplied string
  */
 char *change_dir(char *d)
 {
-	int ret, len;
+	int len;
 	char *value, *old_dir;
 
-	old_dir = _getcwd();
-	if (d == NULL || _strcmp(d, "~") == 0 || _strcmp(d, "$HOME") == 0)
+	if ((old_dir = _getcwd()) == NULL)
+		return (NULL);
+	if (d[0] == '\0')
 	{
-		value = _getenv("HOME");
-		ret = chdir(value);
-		if (ret == 0)
-		{
-			setenv("OLDPWD", old_dir, 1);
-			setenv("PWD", value, 1);
-		}
-		free(old_dir);
+		value = getenv("HOME");
+		ch_dir(old_dir, value, 0);
+		return (value);
+	}
+	if ((_strcmp(d, "~") == 0) || (_strcmp(d, "$HOME") == 0))
+	{
+		value = getenv("HOME");
+		ch_dir(old_dir, value, 0);
 		return (value);
 	}
 	if (_strcmp(d, "-") == 0)
 	{
-		value = _getenv("OLDPWD");
-		ret = chdir(value);
-		if (ret == 0)
-                {
-                        setenv("OLDPWD", old_dir, 1);
-                        setenv("PWD", value, 1);
-                }
-		free(old_dir);
-                return (value);
+		value = getenv("OLDPWD");
+		ch_dir(old_dir, value, 0);
+		return (value);
 	}
 	if ((_strcmp(d, ".")) == 0 || (_strcmp(d, "./")) == 0)
 	{
-		value = _getenv("PWD");
-	        free(old_dir);
+		value = getenv("PWD");
+		free(old_dir);
 		return (value);
 	}
 	if ((_strcmp(d, "..")) == 0)
 	{
-		value = _getenv("PWD");
+		value = getenv("PWD");
 		len = _strlen(value);
 		while (len)
 		{
 			if (value[--len] == '/')
-				value[len] = '\0';
+				break;
 		}
-		d = value;
+		value[++len] = '\0';
+		ch_dir(old_dir, value, 1);
+		value = getenv("PWD");
+		return (value);
 	}
-	ret = chdir(d);
-	if (ret == 0)
+	if (ch_dir(old_dir, d, 1) == 0)
 	{
-		setenv("OLDPWD", old_dir, 1);
-		setenv("PWD", d, 1);
+		value = getenv("PWD");
+		return (value);
 	}
-	free(old_dir);
-	return (d);
+	value = getenv("PWD");
+	write(1, d, _strlen(d));
+	write(1, ": no such file or directory\n", 28);
+	return (value);
 }

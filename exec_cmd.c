@@ -34,5 +34,6 @@ int exec_cmd(char *cmd, char *line)
 	{
 		wait(&status);
 	}
+	free(argv);
 	return (0);
 }

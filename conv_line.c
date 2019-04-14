@@ -22,8 +22,6 @@ char **conv_line(char *cmd, char *line)
 	for (i = 1; i <= spac_num; i++)
 	{
 		av[i] = strtok(NULL, " ");
-		if (av[i][0] == ':' && av[i][1] == '/')
-			av[i] = getenv("PWD");
 	}
 	av[i] = NULL;
 	return (av);

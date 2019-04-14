@@ -8,9 +8,10 @@
 list_t *path_list(list_t **head)
 {
 	char *name = "PATH";
-	char *value, *token;
+	char *value, *value1, *token;
 
 	value = _getenv(name);
+	value1 = value;
 	if (value == NULL)
 		return (NULL);
 	token = strtok(value, ":");
@@ -19,5 +20,6 @@ list_t *path_list(list_t **head)
 		add_node(head, token);
 		token = strtok(NULL, ":");
 	}
+	free(value1);
 	return ((*head));
 }

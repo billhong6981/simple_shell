@@ -50,14 +50,14 @@ void free_av(char **av);
 char **conv_line(char *cmd, char *line);
 int _strcmp(char *s1, char *s2);
 size_t get_current_dir(char **dir, char *str);
-char *_getcwd(void);
+char *_getcwd();
 ssize_t _get_line(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char *(*get_builtin_fn(char *s, char **d))(char *);
-char *change_dir(char *d);
+char *(*get_builtin_fn(char *s, char **d))(char *, list_t *);
+char *change_dir(char *d, list_t *h);
 char *_getenv(char *env);
-char *ls_current_dir(char *d);
-char *exit_fn(char *d);
+char *ls_current_dir(char *d, list_t *h);
+char *exit_fn(char *d, list_t *h);
 int ch_dir(char *old_dir, char *value, int flag);
 
 #endif

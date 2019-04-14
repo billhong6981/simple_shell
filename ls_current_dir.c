@@ -4,9 +4,8 @@
  * @d: a path name with leading ':' character
  * Return: returns the current working path
  */
-char *ls_current_dir(char *d)
+char *ls_current_dir(__attribute__((unused)) char *d, __attribute__((unused)) list_t *h)
 {
-	(void)d;
 	char *value;
 	value = getenv("PWD");
 	return (value);

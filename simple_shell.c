@@ -9,15 +9,15 @@ int main(void)
 	list_t *head = NULL;
 	size_t len = 0;
 	char *cmd, *av1 = NULL, *dir = NULL, *new_line, *line = NULL;
-	char *(*found_builtin)(char *);
+	char *(*found_builtin)(char *, list_t *);
 
 	path_list(&head);
-	dir = getenv("PWD");
 	while (1)
 	{
-/*		dir = _getcwd();*/
+		dir = _getcwd();
 		write(1, dir, _strlen(dir));
 		write(1, "$ ", 2);
+		free(dir);
 		if ((_get_line(&line, &len, stdin)) == -1)
 			break;
 /*		if ((_strcmp(line, "exit\n")) == 0)
@@ -28,10 +28,11 @@ int main(void)
 			}*/
 		if ((new_line = trun_space(line)) == NULL)
 			continue;
+		free(line);
 		found_builtin = get_builtin_fn(new_line, &av1);
 		if (found_builtin != NULL)
 		{
-			dir = found_builtin(av1);
+			dir = found_builtin(av1, head);
 			continue;
 		}
 		if ((cmd = search_file(head, new_line)) == NULL)
@@ -43,6 +44,5 @@ int main(void)
 			exec_cmd(cmd, new_line);
 	}
 	free_list(head);
-	free(line);
 	return (0);
 }

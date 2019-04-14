@@ -1,12 +1,12 @@
 #include "holberton.h"
 /**
  * exit_fn - a function exit the application
- * @d: a argument
+ * @h: a argument
  * Return: exit with 0 on success
  */
-char *exit_fn(char *d)
+char *exit_fn(__attribute__((unused)) char *d, list_t *h)
 {
-	(void)d;
+	free_list(h);
 	unsetenv("OLDPWD");
 	exit(0);
 }

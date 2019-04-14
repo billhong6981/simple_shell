@@ -4,14 +4,14 @@
  * @d: a directory name desired to change
  * Return: returns the path to the desired dir, or d the supplied string
  */
-char *change_dir(char *d)
+char *change_dir(char *d, __attribute__((unused)) list_t *h)
 {
 	int len;
 	char *value, *old_dir;
 
 	if ((old_dir = _getcwd()) == NULL)
 		return (NULL);
-	if (d[0] == '\0')
+	if (d[0] == '\0'|| d == NULL)
 	{
 		value = getenv("HOME");
 		ch_dir(old_dir, value, 0);

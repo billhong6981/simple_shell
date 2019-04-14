@@ -14,10 +14,12 @@ list_t *path_list(list_t **head)
 	value1 = value;
 	if (value == NULL)
 		return (NULL);
+	if (value[0] == ':')
+		add_node(head, ":");
 	token = strtok(value, ":");
 	while (token != NULL)
 	{
-		add_node(head, token);
+		add_node_end(head, token);
 		token = strtok(NULL, ":");
 	}
 	free(value1);

@@ -9,7 +9,7 @@ char *search_file(list_t *head, char *str)
 {
 	list_t *h = head;
 	int len = 0;
-	char *s, *s1, *line1, *token1;
+	char *s, *s1, *line1, *token1, *value;
 	static char array[500];
 	struct stat st;
 
@@ -35,6 +35,8 @@ char *search_file(list_t *head, char *str)
 		len = _strlen(h->str);
 		while (len)
 			*(--s1) = (h->str)[--len];
+		if (len == 1 && *s1 == ':')
+			*s1 = '.';
 		if (stat(s1, &st) == 0)
 		{
 			free(line1);

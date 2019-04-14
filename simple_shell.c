@@ -20,12 +20,6 @@ int main(void)
 		free(dir);
 		if ((_get_line(&line, &len, stdin)) == -1)
 			break;
-/*		if ((_strcmp(line, "exit\n")) == 0)
-		{
-			free_list(head);
-			free(line);
-			exit(0);
-			}*/
 		if ((new_line = trun_space(line)) == NULL)
 			continue;
 		free(line);

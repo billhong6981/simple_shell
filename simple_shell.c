@@ -4,6 +4,8 @@
  * @: input void
  * Return: 0 on success, 1 if fail
  */
+alias vcc='gcc -Wall -Werror -Wextra -pedantic -g -o shell *.c && valgrind -v --leak-check=full --show-leak-kinds=all ./shell'
+
 int main(void)
 {
 	list_t *head = NULL;
@@ -11,6 +13,7 @@ int main(void)
 	char *cmd, *av1 = NULL, *dir = NULL, *new_line, *line = NULL;
 	char *(*found_builtin)(char *, list_t *);
 
+	system("stty intr 'Q'");
 	path_list(&head);
 	while (1)
 	{
@@ -19,7 +22,11 @@ int main(void)
 		write(1, "$ ", 2);
 		free(dir);
 		if ((_get_line(&line, &len, stdin)) == -1)
+		{
+			if (line != NULL)
+				free(line);
 			break;
+		}
 		if ((new_line = trun_space(line)) == NULL)
 			continue;
 		free(line);

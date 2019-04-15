@@ -60,5 +60,6 @@ char *ls_current_dir(char *d, list_t *h);
 char *exit_fn(char *d, list_t *h);
 int ch_dir(char *old_dir, char *value, int flag);
 list_t *add_node_end(list_t **head, char *str);
+int _atoi(char *s);
 
 #endif

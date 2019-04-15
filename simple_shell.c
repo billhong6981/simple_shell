@@ -20,7 +20,8 @@ int main(void)
 		free(dir);
 		if ((_get_line(&line, &len, stdin)) == -1)
 			break;
-		if ((new_line = trun_space(line)) == NULL)
+		new_line = turn_space(line);
+		if (new_line == NULL)
 			continue;
 		free(line);
 		found_builtin = get_builtin_fn(new_line, &av1);
@@ -29,7 +30,8 @@ int main(void)
 			dir = found_builtin(av1, head);
 			continue;
 		}
-		if ((cmd = search_file(head, new_line)) == NULL)
+		cmd = search_file(head, new_line);
+		if (cmd == NULL)
 		{
 			write(1, new_line, _strlen(new_line));
 			write(1, ": command not found\n", 20);

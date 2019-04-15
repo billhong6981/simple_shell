@@ -56,7 +56,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *(*get_builtin_fn(char *s, char **d))(char *, list_t *);
 char *change_dir(char *d, list_t *h);
 char *_getenv(char *env);
-char *ls_current_dir(char *d, list_t *h);
+char *ls_current_dir(void);
 char *exit_fn(char *d, list_t *h);
 int ch_dir(char *old_dir, char *value, int flag);
 list_t *add_node_end(list_t **head, char *str);

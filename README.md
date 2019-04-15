@@ -30,11 +30,15 @@ total 0
 
 | File name | Description |
 | --- | --- |
+| README.md | this file |
 | add_node.c | adds a node to the linked list used for the path |
+| add_node_end.c | adds a node to the end of the linked list used for path |
+| ch_dir.c | changes the current working directory |
 | change_dir.c | changes the current working directory |
 | conv_line.c | converts a line to a command for execve |
 | exec_cmd.c | executes the command given to it |
-| free_av.c | frees the values contained in av | /*make this better*/
+| exit_fn.c | exits the program |
+| free_av.c | frees the values contained in av |
 | free_list.c | frees the linked list used for the path |
 | get_current_dir.c | checks current directory for :/ |
 | get_line.c | gets a line of input from the user |
@@ -42,8 +46,9 @@ total 0
 | getenv.c | gets the current working environment |
 | helper.c | handles built ins such as cd |
 | holberton.h | header contains libs, global vars, structs, func prototypes |
+| ls_current_dir.c | prints the current working directory |
 | path_list.c | takes the path and makes it into a linked list |
-| print_list.c | a debug file to print the contents of the linked list | /* remove? */
+| print_list.c | a debug file to print the contents of the linked list |
 | realloc.c | reallocates memory for getline |
 | search_file.c | searches the path for the given file |
 | simple_shell.c | the main driver function |

@@ -2,6 +2,7 @@
 /**
  * exit_fn - a function exit the application
  * @h: a argument
+ * @d: currently an unused atribute
  * Return: exit with 0 on success
  */
 char *exit_fn(__attribute__((unused)) char *d, list_t *h)

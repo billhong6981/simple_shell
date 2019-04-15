@@ -36,7 +36,8 @@ int main(void)
 			dir = found_builtin(av1, head);
 			continue;
 		}
-		if ((cmd = search_file(head, new_line)) == NULL)
+		cmd = search_file(head, new_line);
+		if (cmd == NULL)
 		{
 			write(1, new_line, _strlen(new_line));
 			write(1, ": command not found\n", 20);

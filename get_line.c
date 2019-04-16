@@ -17,8 +17,6 @@ ssize_t _get_line(char **lineptr, size_t *n, FILE *stream)
 	while (1)
 	{
 		c = fgetc(stream);
-		if (c == 3)
-			continue;
 		if (c == EOF)
 		{
 			free(*lineptr);

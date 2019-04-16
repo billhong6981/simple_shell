@@ -5,7 +5,7 @@
  * @d: currently an unused atribute
  * Return: exit with 0 on success
  */
-char *exit_fn(__attribute__((unused)) char *d, list_t *h)
+char *exit_fn(char *d, list_t *h)
 {
 	int n;
 

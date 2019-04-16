@@ -12,6 +12,7 @@ char *(*get_builtin_fn(char *s, char **d))(char *, list_t *)
 	static char array[100];
 	fn_types builtin_fn[] = {
 		{"cd", change_dir},
+		{"echo", echo_fn},
 		{"exit", exit_fn},
 		{NULL, NULL} };
 

@@ -4,8 +4,6 @@
  * @: input void
  * Return: 0 on success, 1 if fail
  */
-alias vcc='gcc -Wall -Werror -Wextra -pedantic -g -o shell *.c && valgrind -v --leak-check=full --show-leak-kinds=all ./shell'
-
 int main(void)
 {
 	list_t *head = NULL;
@@ -33,7 +31,7 @@ int main(void)
 		found_builtin = get_builtin_fn(new_line, &av1);
 		if (found_builtin != NULL)
 		{
-			dir = found_builtin(av1, head);
+			found_builtin(av1, head);
 			continue;
 		}
 		cmd = search_file(head, new_line);

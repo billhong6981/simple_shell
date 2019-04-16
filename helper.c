@@ -9,15 +9,17 @@ char *(*get_builtin_fn(char *s, char **d))(char *, list_t *)
 {
 	int i, j;
 	char *cmd = NULL;
-	static char array[100];
+	static char array[500];
 	fn_types builtin_fn[] = {
 		{"cd", change_dir},
 		{"echo", echo_fn},
 		{"exit", exit_fn},
+		{"setenv", setenv_fn},
+		{"unsetenv", unsetenv_fn},
 		{NULL, NULL} };
 
 	*d = &array[0];
-	for (i = 0; i < 100; i++)
+	for (i = 0; i < 500; i++)
 		(*d)[i] = '\0';
 	if (s == NULL)
 		return (NULL);
@@ -30,7 +32,7 @@ char *(*get_builtin_fn(char *s, char **d))(char *, list_t *)
 	if (s[i] != '\0')
 	{
 		++i;
-		for (j = 0; s[i] != ' ' && s[i] != '\0'; i++, j++)
+		for (j = 0; s[i] != '\0'; i++, j++)
 			(*d)[j] = s[i];
 	}
 	for (i = 0; builtin_fn[i].str; i++)

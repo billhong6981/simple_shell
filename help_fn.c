@@ -25,8 +25,12 @@ char *help_fn(char *d, __attribute__((unused)) list_t *h)
 
 	for (i = 0; helper[i].cmd; i++)
 	{
-		printf("d:%s, cmd:%s\n", d, helper[i].cmd);
-		if (_strcmp(d, helper[i].cmd) == 0)
+		write(1, "d:", 2);
+		write(1, d, _strlen(d));
+		write(1, "cmd:", 4);
+		write(1, helper[i].cmd, _strlen(helper[i].cmd));
+/*		printf("d:%s, cmd:%s\n", d, helper[i].cmd);
+ */		if (_strcmp(d, helper[i].cmd) == 0)
 		{
 			write(1, helper[i].help, _strlen(helper[i].help));
 			return (NULL);

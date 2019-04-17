@@ -12,6 +12,7 @@ char *exit_fn(char *d, list_t *h)
 	n = (d == NULL) ? (0) : (_atoi(d));
 	free_list(h);
 	unsetenv("OLDPWD");
-	printf("number:%d\n", n);
+	write (1, "number:", 7);
+	write (1, _itoa_fn(n), _strlen(_itoa_fn(n)));
 	exit(n);
 }

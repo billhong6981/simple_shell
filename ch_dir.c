@@ -28,8 +28,8 @@ int ch_dir(char *old_dir, char *value, int flag)
 		if (ret == 0)
 		{
 			current_dir = _getcwd();
-			setenv("OLDPWD", old_dir, 1);
-			setenv("PWD", current_dir, 1);
+			_setenv("OLDPWD", old_dir, 1);
+			_setenv("PWD", current_dir, 1);
 			free(current_dir);
 			free(old_dir);
 			return (ret);

@@ -7,7 +7,7 @@ $ [command] [arguments]
 A simple version of shell, it will execute any files found in the path, and has
 some built ins working.
 .br
-The following built ins work: exit, cwd, echo, pwd, setenv, unsetenv.
+The following built ins work: alias, exit, cwd, echo, pwd, setenv, unsetenv.
 .SH EXAMPLE
 Interactive mode example:
 .br

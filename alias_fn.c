@@ -1,9 +1,9 @@
 #include "holberton.h"
 /**
- * echo_fn - a function displays the varialble contents on teminal
- * @d: a directory name desired to change
+ * alias_fn - a function lists the alias contents on teminal
+ * @d: a alias name
  * @h: a unsied head pointer
- * Return: returns the contents of variable
+ * Return: returns NULL
  */
 char *alias_fn(char *d, __attribute__((unused)) list_t *h)
 {

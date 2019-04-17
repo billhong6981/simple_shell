@@ -75,5 +75,7 @@ char *unsetenv_fn(char *d, list_t *h);
 int _unsetenv(char *env);
 int _setenv(char *env, char *envval, int overwrite);
 char *help_fn(char *d, list_t *h);
+char *alias_fn(char *d, list_t *h);
+char *_strstr(char *haystack, char *needle);
 
 #endif

@@ -27,8 +27,6 @@ char *search_file(list_t *head, char *str)
 			free(line1);
 			return (s);
 		}
-		free(line1);
-		return (NULL);
 	}
 	*(--s) = '/';
 	while (h != NULL)

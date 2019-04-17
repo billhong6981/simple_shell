@@ -35,7 +35,7 @@ typedef struct list_s
 typedef struct func
 {
 	char *str;
-	char *(*fn)();
+	char *(*fn)(char *, list_t *);
 } fn_types;
 /**
  * struct string - a struct for the help cmd
@@ -45,7 +45,7 @@ typedef struct func
 typedef struct string
 {
 	char *cmd;
-	char *help;
+	char *x;
 } Strings;
 /* The following are prototypes */
 list_t *add_node(list_t **head, char *str);

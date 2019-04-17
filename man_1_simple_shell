@@ -15,11 +15,20 @@ $ ls
 .br
 file_a file_b file_c
 .br
+ 
+.br
 Non-interactive mode example:
 .br
 echo "ls" |
 .B ./hsh
 .br
+ 
+.br
+Example of a built in:
+.br
+$ cd
+.br
+/home/vagrant$
 file_a file_b file_c
 .SH OPTIONS
 This version of simple shell does not take any options.

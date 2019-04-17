@@ -40,7 +40,7 @@ int _setenv(char *env, char *envval, int overwrite)
 			for (j = 0; env[j] != '\0'; j++)
 			     environ[i][j] = env[j];
 			environ[i][j++] = '=';
-			for(; *envval != '\0'; j++)
+			for (; *envval != '\0'; j++)
 				environ[i][j] = *(envval++);
 			environ[i][j] = *envval;
 			return (0);
@@ -52,7 +52,7 @@ int _setenv(char *env, char *envval, int overwrite)
 	for (j = 0; env[j] != '\0'; j++)
 		environ[i][j] = env[j];
 	environ[i][j++] = '=';
-	for(; *envval != '\0'; j++)
+	for (; *envval != '\0'; j++)
 		environ[i][j] = *(envval++);
 	environ[i][j] = *envval;
 	environ[++i] = NULL;

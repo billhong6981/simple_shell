@@ -30,7 +30,7 @@ char *echo_fn(char *d, __attribute__((unused)) list_t *h)
 			free(str);
 			return (NULL);
 		}
-       		if (d[1] == '?' && d[2] == '\0')
+		if (d[1] == '?' && d[2] == '\0')
 		{
 			write(1, "0\n", 2);
 			return (NULL);

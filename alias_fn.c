@@ -14,7 +14,7 @@ char *alias_fn(char *d, __attribute__((unused)) list_t *h)
 	fd = open(n, O_RDWR | O_CREAT | O_APPEND, S_IRWXU | S_IRGRP | S_IROTH);
 	lseek(fd, 0, 0);
 	bytes_read = read(fd, buf, 1023);
-	if (*s == '\0' || s == NULL || *s ==' ')
+	if (*s == '\0' || s == NULL || *s == ' ')
 	{
 		write(1, buf, bytes_read);
 		close(fd);
@@ -43,7 +43,7 @@ char *alias_fn(char *d, __attribute__((unused)) list_t *h)
 		write(fd, d, _strlen(d));
 		write(fd, "\n", 1);
 		close(fd);
-		return(NULL);
+		return (NULL);
 	}
 	close(fd);
 	return (NULL);

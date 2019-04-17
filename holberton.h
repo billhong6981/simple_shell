@@ -37,7 +37,11 @@ typedef struct func
 	char *str;
 	char *(*fn)();
 } fn_types;
-
+/**
+ * struct string - a struct for the help cmd
+ * @cmd: command to find help for
+ * @help: the help command
+ */
 typedef struct string
 {
 	char *cmd;

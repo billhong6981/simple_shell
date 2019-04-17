@@ -25,7 +25,8 @@ int main(void)
 				free(line);
 			break;
 		}
-		if ((new_line = trun_space(line)) == NULL)
+		new_line = trun_space(line);
+		if (new_line == NULL)
 			continue;
 		free(line);
 		found_builtin = get_builtin_fn(new_line, &av1);

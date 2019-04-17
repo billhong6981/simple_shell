@@ -8,10 +8,10 @@ char *change_dir(char *d, __attribute__((unused)) list_t *h)
 {
 	int len;
 	char *value, *old_dir;
-
-	if ((old_dir = _getcwd()) == NULL)
+	old_dir = _getcwd();
+	if (old_dir == NULL)
 		return (NULL);
-	if (d[0] == '\0'|| d == NULL)
+	if (d[0] == '\0' || d == NULL)
 	{
 		value = getenv("HOME");
 		ch_dir(old_dir, value, 0);

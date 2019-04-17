@@ -8,27 +8,27 @@
 char *help_fn(char *d, __attribute__((unused)) list_t *h)
 {
 	int i;
-	char *cd_h = "cd: cd [dir]...\nChange the shell working directory.\n";
-	char *e_h = "echo: echo [$arg]...\nWrite arguments to the std output\n";
-	char *ex_h = "exit: exit(n)\nExit the shell with status of n\n";
-	char *set_h = "setenv: setenv VARIABLE value\nSet env VAR with value\n";
-	char *unset_h = "unsetenv: unsetenv VARIABLE\nUnset enviroment VAR\n";
-	char *help_h = "help: help [cmd]\nDisplay info about builtin command\n";
-	Strings helper[] = {
-		{"cd", cd_h},
-		{"echo", e_h},
-		{"exit", ex_h},
-		{"setenv", set_h},
-		{"unsetenv", unset_h},
-		{"help", help_h},
-		{NULL, NULL} };
+	Strings helper[7];
 
+	helper[0].cmd = "cd";
+	helper[0].x = "cd: cd [dir]...\nChange the shell working directory.\n";
+	helper[1].cmd = "echo";
+	helper[1].x = "echo: echo [$arg]...\nWrite arguments to the std output\n";
+	helper[2].cmd = "exit";
+	helper[2].x = "exit: exit(n)\nExit the shell with status of n\n";
+	helper[3].cmd = "setenv";
+	helper[3].x = "setenv: setenv VARIABLE value\nSet env VAR with value\n";
+	helper[4].cmd = "unsetenv";
+	helper[4].x = "unsetenv: unsetenv VARIABLE\nUnset enviroment VAR\n";
+	helper[5].cmd = "help";
+	helper[5].x = "help: help [cmd]\nDisplay info about builtin command\n";
+	helper[6].cmd = NULL;
+	helper[6].x = NULL;
 	for (i = 0; helper[i].cmd; i++)
 	{
-		printf("d:%s, cmd:%s\n", d, helper[i].cmd);
 		if (_strcmp(d, helper[i].cmd) == 0)
 		{
-			write(1, helper[i].help, _strlen(helper[i].help));
+			write(1, helper[i].x, _strlen(helper[i].x));
 			return (NULL);
 		}
 	}

@@ -11,7 +11,7 @@ char **conv_line(char *cmd, char *line)
 	char **av;
 	int i, spac_num;
 
-	for (i = 0, spac_num = 0; line[i] != '\0'; i++)
+	for (i = 0, spac_num = 0; line[i] != '#' && line[i] != '\0'; i++)
 	{
 		if (line[i] == ' ')
 			spac_num++;

@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <assert.h>
+#include <signal.h>
 /* The following are global vars */
 extern char **environ;
 /**
@@ -36,6 +37,12 @@ typedef struct func
 	char *str;
 	char *(*fn)();
 } fn_types;
+
+typedef struct string
+{
+	char *cmd;
+	char *help;
+} Strings;
 /* The following are prototypes */
 list_t *add_node(list_t **head, char *str);
 void free_list(list_t *head);
@@ -65,5 +72,8 @@ char *echo_fn(char *d, list_t *h);
 char *_itoa_fn(int n);
 char *setenv_fn(char *d, list_t *h);
 char *unsetenv_fn(char *d, list_t *h);
+int _unsetenv(char *env);
+int _setenv(char *env, char *envval, int overwrite);
+char *help_fn(char *d, list_t *h);
 
 #endif

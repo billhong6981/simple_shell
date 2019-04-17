@@ -1,13 +1,13 @@
 #include "holberton.h"
 /**
- * _getenv - get enviroment variables
+ * _unsetenv - unset enviroment variables
  * @env: env var to get
- * Return: current envirment variables, of specified type or null if fail
+ * Return: 0 on success, -1 if fail
  */
-char *_getenv(char *env)
+int _unsetenv(char *env)
 {
-	int i, count, j;
-	char *pathcheck, *path, *value;
+	int i, count, j, flag = 0;
+	char *pathcheck;
 	char **ev;
 
 	for (i = 0, count = 0; environ[i] != NULL; i++)
@@ -24,16 +24,18 @@ char *_getenv(char *env)
 		pathcheck = strtok(ev[i], "=");
 		if (!_strcmp(pathcheck, env))
 		{
-			path = strtok(NULL, "=");
-			value = _strdup(path);
 			for (j = 0; j <= i; j++)
 				free(ev[j]);
 			free(ev);
-			return (value);
+			flag = 1;
 		}
+		if (flag == 1)
+			environ[i] = environ[i + 1];
 	}
+	if (flag == 1)
+		return (0);
 	for (j = 0; j < i; j++)
 		free(ev[j]);
 	free(ev);
-	return (NULL);
+	return (-1);
 }

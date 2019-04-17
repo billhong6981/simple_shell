@@ -56,6 +56,6 @@ char *change_dir(char *d, __attribute__((unused)) list_t *h)
 	}
 	value = getenv("PWD");
 	write(1, d, _strlen(d));
-	write(1, ": no such file or directory\n", 28);
+	write(1, ":no such file or directory\n", 27);
 	return (value);
 }

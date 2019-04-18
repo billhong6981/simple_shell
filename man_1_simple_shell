@@ -5,7 +5,8 @@ Simple Shell \- A simple version of shell
 $ [command] [arguments]
 .SH DESCRIPTION
 A simple version of shell, it will execute any files found in the path, and has
-some built ins working.
+some built ins working. CTL c, CTL d, and exit will all exit the shell, and exit
+or return with the value of 0.
 .br
 The following built ins work: alias, exit, cwd, echo, pwd, setenv, unsetenv.
 .SH EXAMPLE
@@ -33,7 +34,7 @@ file_a file_b file_c
 .SH OPTIONS
 This version of simple shell does not take any options.
 .SH BUGS
-No Known bugs at this time.
+Slight memory leak form getline.
 .SH AUTHORS
 Bill Huang
 .br

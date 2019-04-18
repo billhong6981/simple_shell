@@ -14,7 +14,7 @@ char *echo_fn(char *d, __attribute__((unused)) list_t *h)
 	if (d[0] == '$')
 	{
 		str = &d[1];
-		value = getenv(str);
+		value = _getenv(str);
 		if (value != NULL)
 		{
 			write(1, value, _strlen(value));

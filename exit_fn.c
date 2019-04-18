@@ -7,10 +7,10 @@
  */
 char *exit_fn(char *d, list_t *h)
 {
-	int n;
+	int n, status;
 
-	n = (d == NULL) ? (0) : (_atoi(d));
+	status = WEXITSTATUS(status);
+	n = (d == NULL) ? (status) : (_atoi(d));
 	free_list(h);
-	unsetenv("OLDPWD");
 	exit(n);
 }

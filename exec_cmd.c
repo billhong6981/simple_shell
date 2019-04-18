@@ -34,6 +34,10 @@ int exec_cmd(char *cmd, char *line)
 	else
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+		{
+			status = WEXITSTATUS(status);
+		}
 	}
 	free(argv);
 	return (0);

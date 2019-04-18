@@ -8,7 +8,7 @@ int main(void)
 {
 	list_t *head = NULL;
 	size_t len = 0;
-	char *cmd, *dir, *value, *av1 = NULL, *new_line, *line = NULL;
+	char *cmd, *dir, *av1 = NULL, *new_line, *line = NULL;
 	char *(*found_builtin)(char *, list_t *);
 
 	path_list(&head);
@@ -29,9 +29,7 @@ int main(void)
 		found_builtin = get_builtin_fn(new_line, &av1);
 		if (found_builtin != NULL)
 		{
-			value = found_builtin(av1, head);
-			if (value != NULL)
-				free(value);
+			found_builtin(av1, head);
 			continue;
 		}
 		cmd = search_file(head, new_line);

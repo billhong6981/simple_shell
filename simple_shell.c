@@ -14,10 +14,13 @@ int main(void)
 	path_list(&head);
 	while (1)
 	{
-		dir = _getcwd();
-		write(1, dir, _strlen(dir));
-		write(1, "$ ", 2);
-		free(dir);
+		if (isatty(0))
+		{
+			dir = _getcwd();
+			write(1, dir, _strlen(dir));
+			write(1, "$ ", 2);
+			free(dir);
+		}
 		if ((getline(&line, &len, stdin)) == -1)
 		{
 			break;

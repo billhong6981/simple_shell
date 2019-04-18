@@ -17,8 +17,8 @@ char **conv_line(char *cmd, char *line)
 			spac_num++;
 	}
 	av = malloc((spac_num + 2) * sizeof(void *));
-	if (line[i] = '#')
-		line[i] = '\0');
+	if (line[i] == '#')
+		line[i] = '\0';
 	strtok(line, " ");
 	av[0] = cmd;
 	for (i = 1; i <= spac_num; i++)

@@ -82,5 +82,6 @@ char *help_fn(char *d, list_t *h);
 char *alias_fn(char *d, list_t *h);
 char *_strstr(char *haystack, char *needle);
 char **_setenv_help(void);
+char * env_f(char *d, list_t *h);
 
 #endif

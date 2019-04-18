@@ -21,11 +21,10 @@ int main(void)
 			write(1, "$ ", 2);
 			free(dir);
 		}
-		if ((getline(&line, &len, stdin)) == -1)
-		{
+		if ((_get_line(&line, &len, stdin)) == -1)
 			break;
-		}
 		new_line = trun_space(line);
+		free(line);
 		if (new_line == NULL)
 			continue;
 		found_builtin = get_builtin_fn(new_line, &av1);
@@ -44,7 +43,6 @@ int main(void)
 		else
 			exec_cmd(cmd, new_line);
 	}
-	free(line);
 	free_list(head);
 	return (0);
 }

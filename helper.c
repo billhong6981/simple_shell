@@ -8,7 +8,7 @@
 char *(*get_builtin_fn(char *s, char **d))(char *, list_t *)
 {
 	int i, j;
-	fn_types builtin_fn[8];
+	fn_types builtin_fn[9];
 	char *cmd = NULL;
 	static char array[300];
 
@@ -26,8 +26,10 @@ char *(*get_builtin_fn(char *s, char **d))(char *, list_t *)
 	builtin_fn[5].fn = help_fn;
 	builtin_fn[6].str = "alias";
 	builtin_fn[6].fn = alias_fn;
-	builtin_fn[7].str = NULL;
-	builtin_fn[7].fn = NULL;
+	builtin_fn[7].str = "env";
+	builtin_fn[7].fn = env_f;
+	builtin_fn[8].str = NULL;
+	builtin_fn[8].fn = NULL;
 	*d = &array[0];
 	for (i = 0; i < 300; i++)
 		(*d)[i] = '\0';

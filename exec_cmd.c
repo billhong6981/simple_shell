@@ -23,7 +23,7 @@ int exec_cmd(char *cmd, char *line)
 	}
 	if (child_pid == 0)
 	{
-		ret = execve(cmd, argv, environ);
+		ret = execve(cmd, argv, NULL);
 		if (ret == -1)
 		{
 			perror("ERROR");

@@ -9,8 +9,8 @@ char *unsetenv_fn(char *d, __attribute__((unused)) list_t *h)
 {
 	int ret;
 
-	ret = _unsetenv(d);
+	ret = unsetenv(d);
 	if (ret == -1)
-		write(2, "ERROR:unset is fail\n", 21);
+		perror("access denied");
 	return (NULL);
 }
